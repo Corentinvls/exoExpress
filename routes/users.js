@@ -14,30 +14,29 @@ router.get('/:name', function(req, res) {
     let info = ressource.find(value => value.name === req.params.name)
     res.json(info)
 })
-router.get('/create/:name/:attribute', function(req, res) {
+router.post('/', function(req, res) {
     let newObject={
-        "name": req.params.name,
-        "attribute": req.params.attribute
+        "name": req.body.name,
+        "attribute": req.body.attribute
     }
+    console.log(req.body);
     ressource.push(newObject)
     res.json(ressource)
 })
-router.get('/replace/:toReplace/:name/:attribute', function(req, res) {
-    let info = ressource.find(value => value.name === req.params.toReplace)
+router.put('/:name', function(req, res) {
+    let info = ressource.find(value => value.name === req.params.name)
     let index = ressource.indexOf(info)
-    ressource[index]={
-        "name": req.params.name,
-        "attribute": req.params.attribute
-    }
+    ressource[index].attribute = req.body.attribute
     res.json(ressource)
 })
-router.get('/modify/:toReplace/:newAttribute', function(req, res) {
-    ressource.find(value => value.name === req.params.toReplace).attribute=req.params.newAttribute
-
+router.patch('/:name', function(req, res) {
+    let info = ressource.find(value => value.name === req.params.name)
+    let index = ressource.indexOf(info)
+    ressource[index]= req.body
     res.json(ressource)
 })
-router.get('/delete/:toReplace', function(req, res) {
-    let info = ressource.find(value => value.name === req.params.toReplace)
+router.delete('/:name', function(req, res) {
+    let info = ressource.find(value => value.name === req.params.name)
     let index = ressource.indexOf(info)
     ressource.splice(index, 1)
     res.json(ressource)
