@@ -8,48 +8,40 @@ async  function testAll() {
             // handle success
             console.log(response.data);
         })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        })
+       .catch(()=>{
+           console.log("try to reload server");})
 
     await axios.get('http://localhost:3000/users/create/antony/noob')
         .then(function (response) {
             // handle success
             console.log(response.data);
         })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        })
+        .catch(()=>{
+            console.log("try to reload server");})
     await axios.get('http://localhost:3000/users/replace/antony/brian/noob')
         .then(function (response) {
             // handle success
             console.log(response.data);
         })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        })
+        .catch(()=>{
+            console.log("try to reload server");})
     await axios.get('http://localhost:3000/users/modify/coco/bigboss')
         .then(function (response) {
             // handle success
             console.log(response.data);
         })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        })
+        .catch(()=>{
+            console.log("try to reload server");})
     await axios.get('http://localhost:3000/users/delete/coco')
         .then(function (response) {
             // handle success
             console.log(response.data);
         })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        })
+        .catch(()=>{
+            console.log("try to reload server");})
 
 
 }
-testAll().then()
+testAll().then(()=>{
+    console.log("done");}).catch(()=>{
+    console.log("try to reload server");})
